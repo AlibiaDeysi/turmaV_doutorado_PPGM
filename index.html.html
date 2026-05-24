@@ -1,0 +1,1863 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PPGM 20 Anos — Ciências Ambientais</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --verde: #1a3d2b;
+    --verde-medio: #2d6a4f;
+    --verde-claro: #52b788;
+    --areia: #e9c46a;
+    --terracota: #c77d46;
+    --creme: #f5f0e8;
+    --creme-escuro: #e8dfc8;
+    --texto: #1a1a18;
+    --texto-suave: #4a4a42;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--creme);
+    color: var(--texto);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--verde);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 110%, rgba(82,183,136,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 10% 20%, rgba(199,125,70,0.12) 0%, transparent 60%);
+  }
+
+  .topo-bg {
+    position: absolute;
+    inset: 0;
+    opacity: 0.07;
+    pointer-events: none;
+  }
+
+  .badge {
+    display: inline-block;
+    border: 1px solid rgba(82,183,136,0.5);
+    color: var(--verde-claro);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.45rem 1.1rem;
+    border-radius: 100px;
+    margin-bottom: 2rem;
+    position: relative;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-anno {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(5rem, 18vw, 13rem);
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(82,183,136,0.35);
+    line-height: 0.85;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    white-space: nowrap;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-content { position: relative; z-index: 2; }
+
+  .hero-tag {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--areia);
+    margin-bottom: 1rem;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.8rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.15;
+    max-width: 760px;
+    margin: 0 auto 1.2rem;
+    animation: fadeUp 0.9s 0.2s ease both;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--verde-claro);
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.6);
+    max-width: 520px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7;
+    font-weight: 300;
+    animation: fadeUp 1s 0.35s ease both;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeUp 1s 0.5s ease both;
+  }
+
+  .hero-meta-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .hero-meta-item span:first-child {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .hero-meta-item span:last-child {
+    font-size: 0.95rem;
+    color: #fff;
+    font-weight: 500;
+  }
+
+  .hero-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255,255,255,0.15);
+    align-self: center;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255,255,255,0.3);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    animation: fadeUp 1.2s 0.8s ease both;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+    animation: scrollPulse 2s infinite;
+  }
+
+  /* ── SEÇÃO SOBRE ── */
+  .section { padding: 5rem 2rem; }
+
+  .container { max-width: 1080px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--verde-medio);
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--verde);
+    margin-bottom: 1.5rem;
+  }
+
+  .sobre-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    margin-top: 3rem;
+  }
+
+  .sobre-text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--texto-suave);
+    margin-bottom: 1.2rem;
+    font-weight: 300;
+  }
+
+  .sobre-text p strong { color: var(--verde); font-weight: 500; }
+
+  .numeros {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .numero-card {
+    background: var(--verde);
+    color: #fff;
+    padding: 1.5rem;
+    border-radius: 4px;
+  }
+
+  .numero-card:first-child {
+    grid-column: 1 / -1;
+    background: var(--areia);
+    color: var(--verde);
+  }
+
+  .numero-valor {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .numero-card:first-child .numero-valor { font-size: 4rem; }
+
+  .numero-label {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── EIXOS TEMÁTICOS — CARROSSEL STORY ── */
+  .eixos-bg {
+    background: var(--verde);
+    padding: 5rem 0;
+    overflow: hidden;
+  }
+
+  .eixos-bg .container {
+    padding: 0 2rem;
+  }
+
+  .story-carousel-wrap {
+    position: relative;
+    margin-top: 3rem;
+  }
+
+  .story-progress {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 1.5rem;
+    padding: 0 2rem;
+  }
+
+  .story-progress-bar {
+    flex: 1;
+    height: 2px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 2px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .story-progress-fill {
+    height: 100%;
+    background: var(--verde-claro);
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.1s linear;
+  }
+
+  .story-progress-bar.done .story-progress-fill { width: 100%; }
+  .story-progress-bar.active .story-progress-fill { width: var(--fill, 0%); }
+
+  .story-track-outer {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    cursor: grab;
+    padding: 0 2rem;
+  }
+
+  .story-track-outer::-webkit-scrollbar { display: none; }
+  .story-track-outer.dragging { cursor: grabbing; }
+
+  .story-track {
+    display: flex;
+    gap: 1rem;
+    width: max-content;
+  }
+
+  .story-card {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    width: 620px;
+    height: 796px;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    user-select: none;
+  }
+
+  .story-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+
+  .story-card[data-eixo="0"] { background: url("image1.jpeg") center/cover no-repeat; }
+  .story-card[data-eixo="1"] { background: url("image1.jpeg") center/cover no-repeat; }
+  .story-card[data-eixo="2"] { background: url("image1.jpeg") center/cover no-repeat;}
+  .story-card[data-eixo="3"] { background: url("image1.jpeg") center/cover no-repeat; }
+  .story-card[data-eixo="4"] { background: url("image1.jpeg") center/cover no-repeat; }
+  .story-card[data-eixo="5"] { background: url("image1.jpeg") center/cover no-repeat; }
+  .story-card[data-eixo="6"] { background: url("image1.jpeg") center/cover no-repeat; }
+  .story-card[data-eixo="7"] { background: url("image1.jpeg") center/cover no-repeat; }
+  .story-card[data-eixo="8"] { background: url("image1.jpeg") center/cover no-repeat; }
+  .story-card[data-eixo="9"] { background: url("image1.jpeg") center/cover no-repeat; }
+  .story-card[data-eixo="10"] { background: url("image1.jpeg") center/cover no-repeat; }
+  .story-card[data-eixo="11"] { background: url("image1.jpeg") center/cover no-repeat; }
+  .story-card[data-eixo="12"] { background: url("image1.jpeg") center/cover no-repeat; }
+
+  .story-card-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.08;
+    pointer-events: none;
+  }
+
+  .story-card-content {
+    position: relative;
+    z-index: 2;
+    background: rgba(10, 28, 18, 0.82);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-top: 1px solid rgba(82,183,136,0.18);
+    padding: 1rem 1.25rem 1.1rem;
+  }
+
+  .story-card-tag {
+    display: inline-block;
+    font-size: 0.58rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--verde-claro);
+    border: 1px solid rgba(82,183,136,0.4);
+    padding: 0.18rem 0.55rem;
+    border-radius: 100px;
+    margin-bottom: 0.45rem;
+  }
+
+  .story-card-nome {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.25;
+  }
+
+  .story-nav {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-end;
+    padding: 1.25rem 2rem 0;
+  }
+
+  .story-nav-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.06);
+    color: #fff;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    backdrop-filter: blur(4px);
+  }
+
+  .story-nav-btn:hover {
+    background: rgba(82,183,136,0.2);
+    border-color: rgba(82,183,136,0.5);
+  }
+
+  .story-nav-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+
+  .story-counter {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.1em;
+    align-self: center;
+    margin-right: auto;
+    padding-left: 2rem;
+  }
+
+  /* ── PROGRAMAÇÃO ── */
+  .prog-section { background: var(--creme-escuro); padding: 5rem 2rem; }
+
+  .prog-tabs {
+    display: flex;
+    gap: 0;
+    margin: 2.5rem 0 2rem;
+    border-bottom: 1px solid rgba(0,0,0,0.12);
+  }
+
+  .prog-tab {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: var(--texto-suave);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: all 0.2s;
+    letter-spacing: 0.03em;
+  }
+
+  .prog-tab.active {
+    color: var(--verde);
+    border-bottom-color: var(--verde-claro);
+  }
+
+  .prog-panel { display: none; }
+  .prog-panel.active { display: block; }
+
+  .prog-item {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    align-items: start;
+  }
+
+  .prog-hora {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--verde-medio);
+    padding-top: 0.1rem;
+  }
+
+  .prog-hora small {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: var(--texto-suave);
+    letter-spacing: 0.05em;
+  }
+
+  .prog-info-titulo {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--texto);
+    margin-bottom: 0.3rem;
+    line-height: 1.4;
+  }
+
+  .prog-info-quem {
+    font-size: 0.85rem;
+    color: var(--texto-suave);
+    font-weight: 300;
+  }
+
+  .prog-tipo {
+    display: inline-block;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.7rem;
+    border-radius: 100px;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+
+  .tipo-palestra { background: rgba(29,158,117,0.12); color: var(--verde-medio); }
+  .tipo-banca { background: rgba(233,196,106,0.25); color: #8a6a10; }
+  .tipo-abertura { background: rgba(199,125,70,0.15); color: var(--terracota); }
+  .tipo-encerramento { background: rgba(26,61,43,0.1); color: var(--verde); }
+
+  /* ── IMPACTOS DAS PESQUISAS — CARROSSEL DE VÍDEO ── */
+  .impactos-bg {
+    background: #0e2419;
+    padding: 5rem 0;
+    overflow: hidden;
+  }
+
+  .impactos-bg .container { padding: 0 2rem; }
+
+  .impacto-carousel-wrap {
+    position: relative;
+    margin-top: 3rem;
+  }
+
+  /* Trilha horizontal com peek */
+  .impacto-track-outer {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    cursor: grab;
+    padding: 0 2rem 1.5rem;
+  }
+
+  .impacto-track-outer::-webkit-scrollbar { display: none; }
+  .impacto-track-outer.dragging { cursor: grabbing; }
+
+  .impacto-track {
+    display: flex;
+    gap: 1.25rem;
+    width: max-content;
+  }
+
+  /* Card de impacto — formato widescreen landscape */
+  .impacto-card {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    width: 620px;
+    height: 796px;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    user-select: none;
+    background: #0e2419;
+  }
+
+  .impacto-card:hover {
+    transform: scale(1.025);
+    box-shadow: 0 24px 64px rgba(0,0,0,0.6);
+  }
+
+  /* Vídeo de fundo autoplay mudo — ocupa o card inteiro */
+  .impacto-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+  }
+
+  /* Fallback: cor/gradiente quando não há vídeo */
+  .impacto-card[data-cor="verde"]   { background: url("video1.mp4") center/cover no-repeat; }
+  .impacto-card[data-cor="ocre"]    { background: url("video1.mp4") center/cover no-repeat; }
+  .impacto-card[data-cor="azul"]    { background: url("image1.jpeg") center/cover no-repeat; }
+  .impacto-card[data-cor="lilas"]   { background: linear-gradient(135deg, #1e0a3d 0%, #4a1a8a 100%); }
+  .impacto-card[data-cor="coral"]   { background: linear-gradient(135deg, #3a0e0e 0%, #7a2a1a 100%); }
+  .impacto-card[data-cor="cinza"]   { background: linear-gradient(135deg, #1a1a1a 0%, #3a3a3a 100%); }
+
+  /* Padrão decorativo SVG sobre o fundo */
+  .impacto-deco {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.12;
+    pointer-events: none;
+  }
+
+  /* Overlay escuro gradiente na base */
+  .impacto-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 70%;
+    background: linear-gradient(to top, rgba(5,15,10,0.95) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  /* Conteúdo textual */
+  .impacto-content {
+    position: relative;
+    z-index: 2;
+    padding: 1.1rem 1.25rem 1.2rem;
+  }
+
+  .impacto-ano {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--areia);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 0.35rem;
+    display: block;
+  }
+
+  .impacto-titulo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.25;
+    margin-bottom: 0.4rem;
+  }
+
+  .impacto-desc {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.6);
+    font-weight: 300;
+    line-height: 1.5;
+    max-width: 420px;
+  }
+
+  /* Indicadores de vídeo — barra inferior */
+  .impacto-dots {
+    display: flex;
+    gap: 6px;
+    padding: 0 2rem;
+    margin-top: 1.25rem;
+    justify-content: center;
+  }
+
+  .impacto-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.25);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .impacto-dot.active {
+    background: var(--verde-claro);
+    transform: scale(1.3);
+  }
+
+  /* Navegação impactos */
+  .impacto-nav {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-end;
+    padding: 1.25rem 2rem 0;
+  }
+
+  .impacto-nav-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.05);
+    color: #fff;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .impacto-nav-btn:hover {
+    background: rgba(82,183,136,0.2);
+    border-color: rgba(82,183,136,0.5);
+  }
+
+  .impacto-nav-btn:disabled { opacity: 0.3; cursor: default; }
+
+  .impacto-counter {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.1em;
+    align-self: center;
+    margin-right: auto;
+    padding-left: 2rem;
+  }
+
+  /* Badge de categoria nos cards de impacto */
+  .impacto-badge {
+    display: inline-block;
+    font-size: 0.58rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--verde-claro);
+    border: 1px solid rgba(82,183,136,0.35);
+    padding: 0.18rem 0.6rem;
+    border-radius: 100px;
+    margin-bottom: 0.55rem;
+  }
+
+  /* ── CONVIDADOS ── */
+  .convidados-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .convidado-card {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+
+  .convidado-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(26,61,43,0.1);
+  }
+
+  .convidado-foto {
+    width: 100%;
+    aspect-ratio: 1;
+    background: var(--creme-escuro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--verde-medio);
+  }
+
+  .convidado-info { padding: 1rem; }
+
+  .convidado-nome {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--texto);
+    margin-bottom: 0.2rem;
+  }
+
+  .convidado-inst {
+    font-size: 0.78rem;
+    color: var(--texto-suave);
+    margin-bottom: 0.5rem;
+    font-weight: 300;
+  }
+
+  .convidado-area {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--verde-medio);
+    font-weight: 500;
+  }
+
+  /* ── LOCAL ── */
+  .local-section { padding: 5rem 2rem; }
+
+  .local-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 3rem;
+  }
+
+  .local-mapa {
+    background: var(--creme-escuro);
+    aspect-ratio: 4/3;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    color: var(--texto-suave);
+    border: 1px solid rgba(0,0,0,0.08);
+    overflow: hidden;
+  }
+
+  .local-info { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .local-linha {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .local-linha:last-child { border-bottom: none; }
+
+  .local-icone {
+    width: 36px;
+    height: 36px;
+    background: var(--verde);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--verde-claro);
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .local-detalhe-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--texto-suave);
+    margin-bottom: 0.3rem;
+  }
+
+  .local-detalhe-valor {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--texto);
+    line-height: 1.4;
+  }
+
+  /* ── RODAPÉ ── */
+  footer {
+    background: var(--texto);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-sub {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .footer-links a {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--verde-claro); }
+
+  .footer-copy {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.2);
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1.2rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.4s, backdrop-filter 0.4s;
+  }
+
+  nav.scrolled {
+    background: rgba(26,61,43,0.95);
+    backdrop-filter: blur(12px);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: #fff; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 700px) {
+    .sobre-grid, .local-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .nav-links { display: none; }
+    .numeros { grid-template-columns: 1fr 1fr; }
+    .numeros .numero-card:first-child { grid-column: 1 / -1; }
+    .prog-item { grid-template-columns: 80px 1fr; gap: 1rem; }
+    .story-card { width: 220px; height: 390px; }
+    .impacto-card { width: 300px; height: 220px; }
+  }
+
+  .divider-line {
+    width: 40px;
+    height: 2px;
+    background: var(--verde-claro);
+    margin-bottom: 2rem;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background: var(--areia);
+    color: var(--verde);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.15s;
+    margin-top: 1rem;
+  }
+
+  .cta-btn:hover { background: #f0d070; transform: translateY(-1px); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">PPGM</a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#programacao">Programação</a></li>
+    <li><a href="#historia">Impactos</a></li>
+    <li><a href="#convidados">Convidados</a></li>
+    <li><a href="#local">Local</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <svg class="topo-bg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
+    <path d="M0,350 Q200,280 400,320 T800,300 T1200,340" stroke="#52b788" stroke-width="1" fill="none"/>
+    <path d="M0,380 Q200,310 400,350 T800,330 T1200,370" stroke="#52b788" stroke-width="1" fill="none"/>
+    <path d="M0,410 Q200,340 400,380 T800,360 T1200,400" stroke="#52b788" stroke-width="1" fill="none"/>
+    <path d="M0,440 Q200,370 400,410 T800,390 T1200,430" stroke="#52b788" stroke-width="1" fill="none"/>
+    <path d="M0,320 Q200,250 400,290 T800,270 T1200,310" stroke="#52b788" stroke-width="1" fill="none"/>
+    <path d="M0,290 Q200,220 400,260 T800,240 T1200,280" stroke="#52b788" stroke-width="1" fill="none"/>
+    <path d="M0,260 Q200,190 400,230 T800,210 T1200,250" stroke="#52b788" stroke-width="0.5" fill="none"/>
+    <path d="M0,470 Q200,400 400,440 T800,420 T1200,460" stroke="#52b788" stroke-width="0.5" fill="none"/>
+    <circle cx="900" cy="150" r="180" stroke="#e9c46a" stroke-width="0.5" fill="none"/>
+    <circle cx="900" cy="150" r="140" stroke="#e9c46a" stroke-width="0.5" fill="none"/>
+    <circle cx="900" cy="150" r="100" stroke="#e9c46a" stroke-width="0.5" fill="none"/>
+    <circle cx="900" cy="150" r="60" stroke="#e9c46a" stroke-width="0.5" fill="none"/>
+  </svg>
+
+  <div class="hero-anno" aria-hidden="true">XX</div>
+
+  <div class="hero-content">
+    <div class="badge">Seminário de Acompanhamento de Teses</div>
+    <p class="hero-tag">PPGM · 20 Anos · 2006 — 2026</p>
+    <h1 class="hero-title">
+      Passado, Presente e<br>
+      <em>Perspectivas Futuras</em><br>
+      das Ciências Ambientais
+    </h1>
+    <p class="hero-sub">
+      Duas décadas de pesquisa em modelagem ambiental, celebradas através de bancas de acompanhamento, palestras e diálogo científico.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span>Data</span>
+        <span>10, 11 e 12 · agosto/2026</span>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-meta-item">
+        <span>Local</span>
+        <span>Auditório do PPGM · UEFS</span>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-meta-item">
+        <span>Formato</span>
+        <span>Presencial e remoto</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Role</span>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section class="section" id="sobre">
+  <div class="container">
+    <p class="section-label">O Evento</p>
+    <h2 class="section-title">Seminário de Acompanhamento de Teses - Turma V - Doutorado <br></h2>
+    <div class="divider-line"></div>
+
+    <div class="sobre-grid">
+      <div class="sobre-text">
+        <p>
+          O <strong>Programa de Pós-Graduação em Modelagem em Ciências da Terra e do Ambiente (PPGM) da Universidade Estadual de Feira de Santana (UEFS) </strong> completa <strong>20 Anos</strong> e a <strong>Turma V - Doutorado</strong> celebra duas décadas de pesquisa e formação em ciências ambientais, reunindo doutorandos, professores e pesquisadores convidados em torno de questões urgentes do nosso tempo.
+        </p>
+        <p>
+          O evento integra <strong>bancas de acompanhamento de projetos de teses</strong>, uma atividade desenvolvida na disciplina de Oficina III. A atividade conta a participação de pesquisadores e pessoas da comunidade geocientífica que compõem as bancas de avaliações e agregam nos trabalhos apresentados.
+        </p>
+        <p>
+          É um momento de troca, compartilhamento, sugestões e recomendações de ideias. O seminário também é um espaço de socialização e recepção aos novos estudantes do programa de pesquisa e de pessoas que anseiam a entrada em futuras seleções.
+        </p>
+      </div>
+      <div class="numeros">
+        <div class="numero-card">
+          <div class="numero-valor">20</div>
+          <div class="numero-label">anos de história do programa</div>
+        </div>
+        <div class="numero-card">
+          <div class="numero-valor">12</div>
+          <div class="numero-label">doutorandos</div>
+        </div>
+        <div class="numero-card">
+          <div class="numero-valor">6</div>
+          <div class="numero-label">temas de pesquisa</div>
+        </div>
+        <div class="numero-card">
+          <div class="numero-valor">+12</div>
+          <div class="numero-label">convidados externos</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EIXOS TEMÁTICOS — CARROSSEL STORY -->
+<section class="eixos-bg" id="eixos">
+  <div class="container">
+    <p class="section-label" style="color: rgba(82,183,136,0.7);">Áreas de Pesquisa</p>
+    <h2 class="section-title" style="color: #fff;">Eixos temáticos do programa</h2>
+    <div class="divider-line"></div>
+  </div>
+
+  <div class="story-carousel-wrap">
+    <div class="story-progress" id="storyProgress">
+      <div class="story-progress-bar active" data-idx="0"><div class="story-progress-fill"></div></div>
+      <div class="story-progress-bar" data-idx="1"><div class="story-progress-fill"></div></div>
+      <div class="story-progress-bar" data-idx="2"><div class="story-progress-fill"></div></div>
+      <div class="story-progress-bar" data-idx="3"><div class="story-progress-fill"></div></div>
+      <div class="story-progress-bar" data-idx="4"><div class="story-progress-fill"></div></div>
+      <div class="story-progress-bar" data-idx="5"><div class="story-progress-fill"></div></div>
+    </div>
+
+    <div class="story-track-outer" id="storyTrack">
+      <div class="story-track" id="storyCards">
+
+        <div class="story-card" data-eixo="0">
+          <svg class="story-card-pattern" viewBox="0 0 220 390" preserveAspectRatio="xMidYMid slice">
+            <path d="M0,195 Q55,140 110,160 T220,150" stroke="#52b788" stroke-width="1.5" fill="none"/>
+            <path d="M0,215 Q55,160 110,180 T220,170" stroke="#52b788" stroke-width="1.5" fill="none"/>
+            <path d="M0,235 Q55,180 110,200 T220,190" stroke="#52b788" stroke-width="1" fill="none"/>
+            <path d="M0,175 Q55,120 110,140 T220,130" stroke="#52b788" stroke-width="1" fill="none"/>
+            <path d="M0,155 Q55,100 110,120 T220,110" stroke="#52b788" stroke-width="0.5" fill="none"/>
+            <circle cx="160" cy="60" r="50" stroke="#e9c46a" stroke-width="0.8" fill="none"/>
+            <circle cx="160" cy="60" r="35" stroke="#e9c46a" stroke-width="0.8" fill="none"/>
+            <circle cx="160" cy="60" r="20" stroke="#e9c46a" stroke-width="0.8" fill="none"/>
+          </svg>
+          <div class="story-card-content">
+            <span class="story-card-tag">Clima</span>
+            <div class="story-card-nome">Mudanças Climáticas</div>
+          </div>
+        </div>
+
+        <div class="story-card" data-eixo="1">
+          <svg class="story-card-pattern" viewBox="0 0 220 390" preserveAspectRatio="xMidYMid slice">
+            <line x1="0" y1="100" x2="220" y2="80" stroke="#c77d46" stroke-width="1"/>
+            <line x1="0" y1="130" x2="220" y2="110" stroke="#c77d46" stroke-width="1"/>
+            <line x1="0" y1="160" x2="220" y2="140" stroke="#c77d46" stroke-width="0.7"/>
+            <line x1="0" y1="190" x2="220" y2="170" stroke="#c77d46" stroke-width="0.7"/>
+            <line x1="0" y1="220" x2="220" y2="200" stroke="#c77d46" stroke-width="0.5"/>
+            <path d="M30,300 L50,240 L70,290 L90,250 L110,280 L130,245 L150,275 L170,255 L190,270" stroke="#c77d46" stroke-width="1.2" fill="none"/>
+          </svg>
+          <div class="story-card-content">
+            <span class="story-card-tag">Solo e Vegetação</span>
+            <div class="story-card-nome">Cenários de Desertificação</div>
+          </div>
+        </div>
+
+        <div class="story-card" data-eixo="2">
+          <svg class="story-card-pattern" viewBox="0 0 220 390" preserveAspectRatio="xMidYMid slice">
+            <circle cx="110" cy="100" r="70" stroke="#52b0d4" stroke-width="1" fill="none"/>
+            <circle cx="110" cy="100" r="50" stroke="#52b0d4" stroke-width="0.8" fill="none"/>
+            <circle cx="110" cy="100" r="30" stroke="#52b0d4" stroke-width="0.6" fill="none"/>
+            <line x1="110" y1="30" x2="110" y2="170" stroke="#52b0d4" stroke-width="0.5"/>
+            <line x1="40" y1="100" x2="180" y2="100" stroke="#52b0d4" stroke-width="0.5"/>
+            <path d="M20,250 Q55,220 90,240 Q125,260 160,230 Q195,200 220,220" stroke="#52b0d4" stroke-width="1.5" fill="none"/>
+          </svg>
+          <div class="story-card-content">
+            <span class="story-card-tag">Sensoriamento</span>
+            <div class="story-card-nome">Espectro­radiometria</div>
+          </div>
+        </div>
+
+        <div class="story-card" data-eixo="3">
+          <svg class="story-card-pattern" viewBox="0 0 220 390" preserveAspectRatio="xMidYMid slice">
+            <line x1="110" y1="20" x2="110" y2="200" stroke="#9b8ec4" stroke-width="1.5"/>
+            <ellipse cx="110" cy="90" rx="80" ry="15" stroke="#9b8ec4" stroke-width="1" fill="none"/>
+            <path d="M110,20 Q190,90 110,90" stroke="#9b8ec4" stroke-width="1" fill="none"/>
+            <path d="M110,20 Q30,90 110,90" stroke="#9b8ec4" stroke-width="1" fill="none"/>
+            <path d="M110,90 Q190,90 110,160" stroke="#9b8ec4" stroke-width="1" fill="none"/>
+            <circle cx="60" cy="280" r="30" stroke="#9b8ec4" stroke-width="0.8" fill="none"/>
+            <circle cx="160" cy="300" r="25" stroke="#9b8ec4" stroke-width="0.8" fill="none"/>
+          </svg>
+          <div class="story-card-content">
+            <span class="story-card-tag">Energia</span>
+            <div class="story-card-nome">Energias Renováveis</div>
+          </div>
+        </div>
+
+        <div class="story-card" data-eixo="4">
+          <svg class="story-card-pattern" viewBox="0 0 220 390" preserveAspectRatio="xMidYMid slice">
+            <path d="M110,50 C110,50 60,100 80,150 C100,200 110,180 110,200 C110,180 120,200 140,150 C160,100 110,50 110,50Z" stroke="#52b788" stroke-width="1" fill="none"/>
+            <circle cx="50" cy="300" r="20" stroke="#52b788" stroke-width="0.8" fill="none"/>
+            <circle cx="110" cy="310" r="25" stroke="#52b788" stroke-width="0.8" fill="none"/>
+            <circle cx="170" cy="295" r="18" stroke="#52b788" stroke-width="0.8" fill="none"/>
+            <line x1="70" y1="300" x2="85" y2="310" stroke="#52b788" stroke-width="0.7"/>
+            <line x1="135" y1="308" x2="152" y2="298" stroke="#52b788" stroke-width="0.7"/>
+          </svg>
+          <div class="story-card-content">
+            <span class="story-card-tag">Biodiversidade</span>
+            <div class="story-card-nome">Bioeconomia</div>
+          </div>
+        </div>
+
+        <div class="story-card" data-eixo="5">
+          <svg class="story-card-pattern" viewBox="0 0 220 390" preserveAspectRatio="xMidYMid slice">
+            <rect x="20" y="60" width="50" height="35" rx="3" stroke="#d47b7b" stroke-width="1" fill="none"/>
+            <rect x="85" y="40" width="50" height="35" rx="3" stroke="#d47b7b" stroke-width="1" fill="none"/>
+            <rect x="150" y="60" width="50" height="35" rx="3" stroke="#d47b7b" stroke-width="1" fill="none"/>
+            <rect x="52" y="140" width="50" height="35" rx="3" stroke="#d47b7b" stroke-width="1" fill="none"/>
+            <rect x="118" y="140" width="50" height="35" rx="3" stroke="#d47b7b" stroke-width="1" fill="none"/>
+            <rect x="85" y="220" width="50" height="35" rx="3" stroke="#d47b7b" stroke-width="1" fill="none"/>
+            <line x1="45" y1="95" x2="77" y2="140" stroke="#d47b7b" stroke-width="0.8"/>
+            <line x1="110" y1="75" x2="77" y2="140" stroke="#d47b7b" stroke-width="0.8"/>
+            <line x1="110" y1="75" x2="143" y2="140" stroke="#d47b7b" stroke-width="0.8"/>
+            <line x1="175" y1="95" x2="143" y2="140" stroke="#d47b7b" stroke-width="0.8"/>
+            <line x1="77" y1="175" x2="110" y2="220" stroke="#d47b7b" stroke-width="0.8"/>
+            <line x1="143" y1="175" x2="110" y2="220" stroke="#d47b7b" stroke-width="0.8"/>
+          </svg>
+          <div class="story-card-content">
+            <span class="story-card-tag">Geoespacial</span>
+            <div class="story-card-nome">Modelagem Ambiental</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="story-nav">
+      <span class="story-counter" id="storyCounter">1 / 6</span>
+      <button class="story-nav-btn" id="storyPrev" aria-label="Anterior" disabled>&#8592;</button>
+      <button class="story-nav-btn" id="storyNext" aria-label="Próximo">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMAÇÃO -->
+<section class="prog-section" id="programacao">
+  <div class="container">
+    <p class="section-label">Agenda</p>
+    <h2 class="section-title">Programação do evento</h2>
+    <div class="divider-line"></div>
+
+    <div class="prog-tabs">
+      <button class="prog-tab active" onclick="trocarDia(0)">Dia 1</button>
+      <button class="prog-tab" onclick="trocarDia(1)">Dia 2</button>
+      <button class="prog-tab" onclick="trocarDia(2)">Dia 3</button>
+    </div>
+
+    <div class="prog-panel active" id="dia-0">
+      <div class="prog-item">
+        <div class="prog-hora">08h30<small>—09h15</small></div>
+        <div>
+          <span class="prog-tipo tipo-abertura">Cerimônia</span>
+          <div class="prog-info-titulo">Abertura Oficial — PPGM 20 Anos</div>
+          <div class="prog-info-quem">Coordenação do Programa · Mesa de autoridades</div>
+        </div>
+      </div>
+      <div class="prog-item">
+        <div class="prog-hora">09h30<small>—10h30</small></div>
+        <div>
+          <span class="prog-tipo tipo-palestra">Palestra de Abertura</span>
+          <div class="prog-info-titulo">Vinte anos de modelagem ambiental: trajetórias e legados</div>
+          <div class="prog-info-quem">Prof. Convidado(a) · Instituição parceira</div>
+        </div>
+      </div>
+      <div class="prog-item">
+        <div class="prog-hora">10h45<small>—12h30</small></div>
+        <div>
+          <span class="prog-tipo tipo-banca">Banca de Acompanhamento</span>
+          <div class="prog-info-titulo">Sessão de bancas doutorais — Eixo Clima e Desertificação</div>
+          <div class="prog-info-quem">Doutorandos da turma · Bancas avaliadoras</div>
+        </div>
+      </div>
+      <div class="prog-item">
+        <div class="prog-hora">14h00<small>—15h30</small></div>
+        <div>
+          <span class="prog-tipo tipo-palestra">Palestra</span>
+          <div class="prog-info-titulo">Cenários futuros de desertificação no Nordeste brasileiro</div>
+          <div class="prog-info-quem">Pesquisador(a) convidado(a)</div>
+        </div>
+      </div>
+      <div class="prog-item">
+        <div class="prog-hora">15h45<small>—17h30</small></div>
+        <div>
+          <span class="prog-tipo tipo-banca">Banca de Acompanhamento</span>
+          <div class="prog-info-titulo">Sessão de bancas doutorais — Eixo Energias e Bioeconomia</div>
+          <div class="prog-info-quem">Doutorandos da turma · Bancas avaliadoras</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="prog-panel" id="dia-1">
+      <div class="prog-item">
+        <div class="prog-hora">08h30<small>—10h00</small></div>
+        <div>
+          <span class="prog-tipo tipo-palestra">Palestra</span>
+          <div class="prog-info-titulo">Espectroradiometria aplicada ao monitoramento de biomas</div>
+          <div class="prog-info-quem">Especialista convidado(a) · Sensoriamento remoto</div>
+        </div>
+      </div>
+      <div class="prog-item">
+        <div class="prog-hora">10h15<small>—12h30</small></div>
+        <div>
+          <span class="prog-tipo tipo-banca">Banca de Acompanhamento</span>
+          <div class="prog-info-titulo">Sessão de bancas doutorais — Eixo Espectroradiometria</div>
+          <div class="prog-info-quem">Doutorandos da turma · Bancas avaliadoras</div>
+        </div>
+      </div>
+      <div class="prog-item">
+        <div class="prog-hora">14h00<small>—15h30</small></div>
+        <div>
+          <span class="prog-tipo tipo-palestra">Palestra</span>
+          <div class="prog-info-titulo">Transição energética e o papel das renováveis no Semiárido</div>
+          <div class="prog-info-quem">Pesquisador(a) convidado(a) · Energias renováveis</div>
+        </div>
+      </div>
+      <div class="prog-item">
+        <div class="prog-hora">15h45<small>—17h30</small></div>
+        <div>
+          <span class="prog-tipo tipo-banca">Banca de Acompanhamento</span>
+          <div class="prog-info-titulo">Sessão de bancas doutorais — Eixo Modelagem Territorial</div>
+          <div class="prog-info-quem">Doutorandos da turma · Bancas avaliadoras</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="prog-panel" id="dia-2">
+      <div class="prog-item">
+        <div class="prog-hora">09h00<small>—10h30</small></div>
+        <div>
+          <span class="prog-tipo tipo-palestra">Palestra</span>
+          <div class="prog-info-titulo">Bioeconomia e serviços ecossistêmicos na Caatinga</div>
+          <div class="prog-info-quem">Pesquisador(a) convidado(a)</div>
+        </div>
+      </div>
+      <div class="prog-item">
+        <div class="prog-hora">10h45<small>—12h30</small></div>
+        <div>
+          <span class="prog-tipo tipo-banca">Banca de Acompanhamento</span>
+          <div class="prog-info-titulo">Sessão final de bancas doutorais</div>
+          <div class="prog-info-quem">Doutorandos da turma · Bancas avaliadoras</div>
+        </div>
+      </div>
+      <div class="prog-item">
+        <div class="prog-hora">14h00<small>—16h00</small></div>
+        <div>
+          <span class="prog-tipo tipo-palestra">Mesa Redonda</span>
+          <div class="prog-info-titulo">Perspectivas futuras da pesquisa ambiental no Brasil</div>
+          <div class="prog-info-quem">Professores e pesquisadores do programa · Convidados externos</div>
+        </div>
+      </div>
+      <div class="prog-item">
+        <div class="prog-hora">16h30<small>—18h00</small></div>
+        <div>
+          <span class="prog-tipo tipo-encerramento">Encerramento</span>
+          <div class="prog-info-titulo">Cerimônia de encerramento e celebração dos 20 anos</div>
+          <div class="prog-info-quem">Comunidade do PPGM · Convidados</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACTOS DAS PESQUISAS — CARROSSEL COM VÍDEO -->
+<section class="impactos-bg" id="historia">
+  <div class="container">
+    <p class="section-label" style="color: rgba(82,183,136,0.7);">Pesquisas</p>
+    <h2 class="section-title" style="color: #fff;">Impactos das nossas pesquisas</h2>
+    <div class="divider-line"></div>
+  </div>
+
+  <div class="impacto-carousel-wrap">
+    <div class="impacto-track-outer" id="impactoTrack">
+      <div class="impacto-track" id="impactoCards">
+
+        <!-- Card 1 -->
+        <div class="impacto-card" data-cor="verde" data-idx="0">
+          <!--
+            Para adicionar vídeo: substitua o comentário abaixo pela tag video.
+            Exemplo:
+            <video class="impacto-video" src="video-caatinga.mp4"
+              autoplay muted loop playsinline preload="auto"></video>
+          -->
+          <video class="impacto-video" src="video1.mp4"
+              autoplay muted loop playsinline preload="auto"></video>
+          <svg class="impacto-deco" viewBox="0 0 560 360" preserveAspectRatio="xMidYMid slice">
+            <path d="M0,180 Q140,120 280,150 T560,140" stroke="#52b788" stroke-width="2" fill="none"/>
+            <path d="M0,210 Q140,150 280,180 T560,170" stroke="#52b788" stroke-width="1.5" fill="none"/>
+            <path d="M0,240 Q140,180 280,210 T560,200" stroke="#52b788" stroke-width="1" fill="none"/>
+            <circle cx="450" cy="70" r="80" stroke="#e9c46a" stroke-width="1" fill="none"/>
+            <circle cx="450" cy="70" r="55" stroke="#e9c46a" stroke-width="0.8" fill="none"/>
+            <circle cx="450" cy="70" r="30" stroke="#e9c46a" stroke-width="0.6" fill="none"/>
+          </svg>
+          <div class="impacto-overlay"></div>
+          <div class="impacto-content">
+            <span class="impacto-ano">2016 — 2025</span>
+            <span class="impacto-badge">Energias Renováveis</span>
+            <div class="impacto-titulo">Mapeamento da Energia Eólica no Brasil</div>
+            <div class="impacto-desc">Os resultados podem subsidiar políticas públicas e planejamento energético.</div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="impacto-card" data-cor="ocre" data-idx="1">
+          
+            <video class="impacto-video" src="video2.mp4"
+              autoplay muted loop playsinline preload="auto"></video>
+          
+          <svg class="impacto-deco" viewBox="0 0 560 360" preserveAspectRatio="xMidYMid slice">
+            <line x1="0" y1="60" x2="560" y2="40" stroke="#c77d46" stroke-width="2"/>
+            <line x1="0" y1="100" x2="560" y2="80" stroke="#c77d46" stroke-width="1.5"/>
+            <line x1="0" y1="140" x2="560" y2="120" stroke="#c77d46" stroke-width="1.2"/>
+            <line x1="0" y1="180" x2="560" y2="160" stroke="#c77d46" stroke-width="1"/>
+            <path d="M60,280 L100,200 L140,260 L180,210 L220,250 L260,215 L300,245 L340,220 L380,240 L420,215 L460,230 L500,210" stroke="#c77d46" stroke-width="1.5" fill="none"/>
+          </svg>
+          <div class="impacto-overlay"></div>
+          <div class="impacto-content">
+            <span class="impacto-ano">2025</span>
+            <span class="impacto-badge">Abelhas</span>
+            <div class="impacto-titulo">Abelhas Solitárias</div>
+            <div class="impacto-desc">Metodologia pioneira</div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="impacto-card" data-cor="azul" data-idx="2">
+          
+            <video class="impacto-video" src="video3.mp4"
+              autoplay muted loop playsinline preload="auto"></video>
+          
+          <svg class="impacto-deco" viewBox="0 0 560 360" preserveAspectRatio="xMidYMid slice">
+            <circle cx="280" cy="140" r="120" stroke="#52b0d4" stroke-width="1.5" fill="none"/>
+            <circle cx="280" cy="140" r="85" stroke="#52b0d4" stroke-width="1.2" fill="none"/>
+            <circle cx="280" cy="140" r="50" stroke="#52b0d4" stroke-width="1" fill="none"/>
+            <circle cx="280" cy="140" r="20" stroke="#52b0d4" stroke-width="0.8" fill="none"/>
+            <line x1="280" y1="20" x2="280" y2="260" stroke="#52b0d4" stroke-width="0.6"/>
+            <line x1="160" y1="140" x2="400" y2="140" stroke="#52b0d4" stroke-width="0.6"/>
+          </svg>
+          <div class="impacto-overlay"></div>
+          <div class="impacto-content">
+            <span class="impacto-ano">2025</span>
+            <span class="impacto-badge">Sensoriamento Remoto</span>
+            <div class="impacto-titulo">Rochagem</div>
+            <div class="impacto-desc">Pó de Rocha.</div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="impacto-card" data-cor="lilas" data-idx="3">
+          
+            <video class="impacto-video" src="video4.mp4"
+              autoplay muted loop playsinline preload="auto"></video>
+          
+          <svg class="impacto-deco" viewBox="0 0 560 360" preserveAspectRatio="xMidYMid slice">
+            <path d="M280,40 C280,40 180,120 200,200 C220,280 280,250 280,280 C280,250 340,280 360,200 C380,120 280,40 280,40Z" stroke="#9b8ec4" stroke-width="1.5" fill="none"/>
+            <path d="M280,80 C280,80 215,145 228,200 C241,255 280,235 280,255 C280,235 319,255 332,200 C345,145 280,80 280,80Z" stroke="#9b8ec4" stroke-width="1" fill="none"/>
+            <circle cx="100" cy="300" r="35" stroke="#9b8ec4" stroke-width="1" fill="none"/>
+            <circle cx="460" cy="290" r="28" stroke="#9b8ec4" stroke-width="1" fill="none"/>
+            <line x1="135" y1="295" x2="210" y2="270" stroke="#9b8ec4" stroke-width="0.8"/>
+            <line x1="432" y1="285" x2="355" y2="265" stroke="#9b8ec4" stroke-width="0.8"/>
+          </svg>
+          <div class="impacto-overlay"></div>
+          <div class="impacto-content">
+            <span class="impacto-ano">2016 — 2022</span>
+            <span class="impacto-badge">Bioeconomia</span>
+            <div class="impacto-titulo">Meliponicultura</div>
+            <div class="impacto-desc">Abelhas meliponíferas.</div>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="impacto-card" data-cor="coral" data-idx="4">
+          <!--
+            <video class="impacto-video" src="video-modelagem.mp4"
+              autoplay muted loop playsinline preload="auto"></video>
+          -->
+          <svg class="impacto-deco" viewBox="0 0 560 360" preserveAspectRatio="xMidYMid slice">
+            <rect x="40" y="60" width="80" height="55" rx="4" stroke="#d47b7b" stroke-width="1.2" fill="none"/>
+            <rect x="160" y="35" width="80" height="55" rx="4" stroke="#d47b7b" stroke-width="1.2" fill="none"/>
+            <rect x="280" y="60" width="80" height="55" rx="4" stroke="#d47b7b" stroke-width="1.2" fill="none"/>
+            <rect x="400" y="40" width="80" height="55" rx="4" stroke="#d47b7b" stroke-width="1.2" fill="none"/>
+            <rect x="100" y="170" width="80" height="55" rx="4" stroke="#d47b7b" stroke-width="1.2" fill="none"/>
+            <rect x="240" y="170" width="80" height="55" rx="4" stroke="#d47b7b" stroke-width="1.2" fill="none"/>
+            <rect x="380" y="170" width="80" height="55" rx="4" stroke="#d47b7b" stroke-width="1.2" fill="none"/>
+            <rect x="220" y="275" width="80" height="55" rx="4" stroke="#d47b7b" stroke-width="1.2" fill="none"/>
+            <line x1="80" y1="115" x2="140" y2="170" stroke="#d47b7b" stroke-width="0.8"/>
+            <line x1="200" y1="90" x2="140" y2="170" stroke="#d47b7b" stroke-width="0.8"/>
+            <line x1="200" y1="90" x2="280" y2="170" stroke="#d47b7b" stroke-width="0.8"/>
+            <line x1="320" y1="115" x2="280" y2="170" stroke="#d47b7b" stroke-width="0.8"/>
+            <line x1="440" y1="95" x2="420" y2="170" stroke="#d47b7b" stroke-width="0.8"/>
+            <line x1="140" y1="225" x2="260" y2="275" stroke="#d47b7b" stroke-width="0.8"/>
+            <line x1="280" y1="225" x2="260" y2="275" stroke="#d47b7b" stroke-width="0.8"/>
+            <line x1="420" y1="225" x2="300" y2="275" stroke="#d47b7b" stroke-width="0.8"/>
+          </svg>
+          <div class="impacto-overlay"></div>
+          <div class="impacto-content">
+            <span class="impacto-ano">2019 — 2024</span>
+            <span class="impacto-badge">Modelagem</span>
+            <div class="impacto-titulo">Plataforma integrada de modelagem territorial</div>
+            <div class="impacto-desc">Sistema open-source de análise espacial ambiental utilizado por prefeituras e órgãos ambientais estaduais.</div>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="impacto-card" data-cor="cinza" data-idx="5">
+          <!--
+            <video class="impacto-video" src="video-formacao.mp4"
+              autoplay muted loop playsinline preload="auto"></video>
+          -->
+          <svg class="impacto-deco" viewBox="0 0 560 360" preserveAspectRatio="xMidYMid slice">
+            <path d="M0,180 Q140,100 280,130 T560,110" stroke="#aaa" stroke-width="2" fill="none"/>
+            <path d="M0,210 Q140,130 280,160 T560,140" stroke="#aaa" stroke-width="1.5" fill="none"/>
+            <path d="M0,240 Q140,160 280,190 T560,170" stroke="#aaa" stroke-width="1" fill="none"/>
+            <path d="M0,270 Q140,190 280,220 T560,200" stroke="#aaa" stroke-width="0.7" fill="none"/>
+            <circle cx="100" cy="80" r="40" stroke="#e9c46a" stroke-width="1" fill="none"/>
+            <circle cx="100" cy="80" r="25" stroke="#e9c46a" stroke-width="0.8" fill="none"/>
+            <circle cx="460" cy="80" r="35" stroke="#e9c46a" stroke-width="1" fill="none"/>
+            <line x1="140" y1="80" x2="425" y2="80" stroke="#e9c46a" stroke-width="0.6" stroke-dasharray="6,4"/>
+          </svg>
+          <div class="impacto-overlay"></div>
+          <div class="impacto-content">
+            <span class="impacto-ano">2006 — 2026</span>
+            <span class="impacto-badge">Formação</span>
+            <div class="impacto-titulo">Geração de pesquisadores em ciências ambientais</div>
+            <div class="impacto-desc">Mais de 200 egressos atuando em universidades, institutos de pesquisa e órgãos ambientais em todo o Brasil.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Dots de navegação -->
+    <div class="impacto-dots" id="impactoDots">
+      <div class="impacto-dot active" data-idx="0"></div>
+      <div class="impacto-dot" data-idx="1"></div>
+      <div class="impacto-dot" data-idx="2"></div>
+      <div class="impacto-dot" data-idx="3"></div>
+      <div class="impacto-dot" data-idx="4"></div>
+      <div class="impacto-dot" data-idx="5"></div>
+    </div>
+
+    <div class="impacto-nav">
+      <span class="impacto-counter" id="impactoCounter">1 / 6</span>
+      <button class="impacto-nav-btn" id="impactoPrev" aria-label="Anterior" disabled>&#8592;</button>
+      <button class="impacto-nav-btn" id="impactoNext" aria-label="Próximo">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+<!-- CONVIDADOS (movido para depois dos impactos) -->
+<section class="section" id="convidados">
+  <div class="container">
+    <p class="section-label">Pessoas</p>
+    <h2 class="section-title">Professores e pesquisadores convidados</h2>
+    <div class="divider-line"></div>
+
+    <div class="convidados-grid">
+      <div class="convidado-card">
+        <div class="convidado-foto">AC</div>
+        <div class="convidado-info">
+          <div class="convidado-nome">Prof. Ana Carvalho</div>
+          <div class="convidado-inst">Universidade Federal · INPE</div>
+          <div class="convidado-area">Mudanças Climáticas</div>
+        </div>
+      </div>
+      <div class="convidado-card">
+        <div class="convidado-foto">RS</div>
+        <div class="convidado-info">
+          <div class="convidado-nome">Prof. Roberto Souza</div>
+          <div class="convidado-inst">Embrapa Semiárido</div>
+          <div class="convidado-area">Desertificação</div>
+        </div>
+      </div>
+      <div class="convidado-card">
+        <div class="convidado-foto">ML</div>
+        <div class="convidado-info">
+          <div class="convidado-nome">Dra. Marina Lima</div>
+          <div class="convidado-inst">INPE · Sensoriamento Remoto</div>
+          <div class="convidado-area">Espectroradiometria</div>
+        </div>
+      </div>
+      <div class="convidado-card">
+        <div class="convidado-foto">JP</div>
+        <div class="convidado-info">
+          <div class="convidado-nome">Prof. João Pereira</div>
+          <div class="convidado-inst">Universidade de Lisboa</div>
+          <div class="convidado-area">Energias Renováveis</div>
+        </div>
+      </div>
+      <div class="convidado-card">
+        <div class="convidado-foto">CF</div>
+        <div class="convidado-info">
+          <div class="convidado-nome">Dra. Claudia Ferreira</div>
+          <div class="convidado-inst">CEPF · Bioeconomia</div>
+          <div class="convidado-area">Bioeconomia</div>
+        </div>
+      </div>
+      <div class="convidado-card">
+        <div class="convidado-foto">PM</div>
+        <div class="convidado-info">
+          <div class="convidado-nome">Prof. Paulo Matos</div>
+          <div class="convidado-inst">UFBA · Geociências</div>
+          <div class="convidado-area">Modelagem Territorial</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCAL -->
+<section class="local-section" id="local">
+  <div class="container">
+    <p class="section-label">Onde e quando</p>
+    <h2 class="section-title">Localização e informações práticas</h2>
+    <div class="divider-line"></div>
+
+    <div class="local-grid">
+      <div class="local-mapa">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3139.5473298042057!2d-38.97329369545775!3d-12.19903116562731!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1spt-BR!2sbr!4v1779633242840!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="local-info">
+        <div class="local-linha">
+          <div class="local-icone">📅</div>
+          <div>
+            <div class="local-detalhe-label">Data</div>
+            <div class="local-detalhe-valor">10, 11 e 12 · agosto/2026</div>
+          </div>
+        </div>
+        <div class="local-linha">
+          <div class="local-icone">📍</div>
+          <div>
+            <div class="local-detalhe-label">Local</div>
+            <div class="local-detalhe-valor">Auditório do PPGM<br><span style="font-size:0.85rem; color: var(--texto-suave); font-weight:300">UEFS · Feira de Santana, Bahia</span></div>
+          </div>
+        </div>
+        <div class="local-linha">
+          <div class="local-icone">🎓</div>
+          <div>
+            <div class="local-detalhe-label">Acesso</div>
+            <div class="local-detalhe-valor">Aberto à comunidade acadêmica</div>
+          </div>
+        </div>
+        <div class="local-linha">
+          <div class="local-icone">✉️</div>
+          <div>
+            <div class="local-detalhe-label">Contato</div>
+            <div class="local-detalhe-valor">alibiadeysi.prof@gmail.com</div>
+          </div>
+        </div>
+        <a href="mailto:alibiadeysi.prof@gmail.com" class="cta-btn">Entrar em contato</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RODAPÉ -->
+<footer>
+  <div class="footer-logo">PPGM 20 Anos</div>
+  <div class="footer-sub">Passado, Presente e Perspectivas Futuras das Ciências Ambientais</div>
+  <div class="footer-links">
+    <a href="#sobre">Sobre</a>
+    <a href="#programacao">Programação</a>
+    <a href="#historia">Impactos</a>
+    <a href="#convidados">Convidados</a>
+    <a href="#local">Local</a>
+  </div>
+  <div class="footer-copy">© Turma V — Doutorado · PPGM · UEFS. Todos os direitos reservados.</div>
+</footer>
+
+<script>
+  /* ── NAV SCROLL ── */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  /* ── PROGRAMAÇÃO TABS ── */
+  function trocarDia(idx) {
+    document.querySelectorAll('.prog-tab').forEach((t, i) => {
+      t.classList.toggle('active', i === idx);
+    });
+    document.querySelectorAll('.prog-panel').forEach((p, i) => {
+      p.classList.toggle('active', i === idx);
+    });
+  }
+
+  /* ── CARROSSEL STORY (eixos) ── */
+  (function() {
+    const TOTAL = 6;
+    const CARD_W = 280;
+    const GAP = 16;
+    const STEP = CARD_W + GAP;
+
+    let current = 0;
+
+    const track = document.getElementById('storyTrack');
+    const prevBtn = document.getElementById('storyPrev');
+    const nextBtn = document.getElementById('storyNext');
+    const counter = document.getElementById('storyCounter');
+    const bars = document.querySelectorAll('.story-progress-bar');
+
+    function updateProgress(idx) {
+      bars.forEach((bar, i) => {
+        bar.classList.remove('done', 'active');
+        const fill = bar.querySelector('.story-progress-fill');
+        if (i < idx) {
+          bar.classList.add('done');
+          fill.style.width = '100%';
+        } else if (i === idx) {
+          bar.classList.add('active');
+          fill.style.width = '100%';
+        } else {
+          fill.style.width = '0%';
+        }
+      });
+    }
+
+    function goTo(idx) {
+      current = Math.max(0, Math.min(TOTAL - 1, idx));
+      track.scrollTo({ left: current * STEP, behavior: 'smooth' });
+      counter.textContent = (current + 1) + ' / ' + TOTAL;
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current === TOTAL - 1;
+      updateProgress(current);
+    }
+
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
+
+    bars.forEach((bar, i) => {
+      bar.addEventListener('click', () => goTo(i));
+    });
+
+    let scrollTimeout;
+    track.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        const idx = Math.round(track.scrollLeft / STEP);
+        if (idx !== current) {
+          current = idx;
+          counter.textContent = (current + 1) + ' / ' + TOTAL;
+          prevBtn.disabled = current === 0;
+          nextBtn.disabled = current === TOTAL - 1;
+          updateProgress(current);
+        }
+      }, 80);
+    });
+
+    let isDragging = false, startX = 0, startScroll = 0;
+    track.addEventListener('mousedown', (e) => {
+      isDragging = true; startX = e.pageX; startScroll = track.scrollLeft;
+      track.classList.add('dragging');
+    });
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      track.scrollLeft = startScroll - (e.pageX - startX);
+    });
+    window.addEventListener('mouseup', () => {
+      if (!isDragging) return;
+      isDragging = false; track.classList.remove('dragging');
+      goTo(Math.round(track.scrollLeft / STEP));
+    });
+
+    let touchStartX = 0;
+    track.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', (e) => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1);
+    }, { passive: true });
+
+    updateProgress(0);
+  })();
+
+  /* ── CARROSSEL IMPACTOS ── */
+  (function() {
+    const TOTAL = 6;
+    const CARD_W = 560;
+    const GAP = 20;
+    const STEP = CARD_W + GAP;
+
+    let current = 0;
+
+    const track = document.getElementById('impactoTrack');
+    const prevBtn = document.getElementById('impactoPrev');
+    const nextBtn = document.getElementById('impactoNext');
+    const counter = document.getElementById('impactoCounter');
+    const dots = document.querySelectorAll('.impacto-dot');
+
+    function updateDots(idx) {
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === idx));
+    }
+
+    function goTo(idx) {
+      current = Math.max(0, Math.min(TOTAL - 1, idx));
+      track.scrollTo({ left: current * STEP, behavior: 'smooth' });
+      counter.textContent = (current + 1) + ' / ' + TOTAL;
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current === TOTAL - 1;
+      updateDots(current);
+    }
+
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
+
+    dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+
+    let scrollTimeout;
+    track.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        const idx = Math.round(track.scrollLeft / STEP);
+        if (idx !== current) {
+          current = idx;
+          counter.textContent = (current + 1) + ' / ' + TOTAL;
+          prevBtn.disabled = current === 0;
+          nextBtn.disabled = current === TOTAL - 1;
+          updateDots(current);
+        }
+      }, 80);
+    });
+
+    let isDragging = false, startX = 0, startScroll = 0;
+    track.addEventListener('mousedown', (e) => {
+      isDragging = true; startX = e.pageX; startScroll = track.scrollLeft;
+      track.classList.add('dragging');
+    });
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      track.scrollLeft = startScroll - (e.pageX - startX);
+    });
+    window.addEventListener('mouseup', () => {
+      if (!isDragging) return;
+      isDragging = false; track.classList.remove('dragging');
+      goTo(Math.round(track.scrollLeft / STEP));
+    });
+
+    let touchStartX = 0;
+    track.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', (e) => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1);
+    }, { passive: true });
+
+    /* Autoplay de vídeos dentro do viewport */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const video = entry.target.querySelector('.impacto-video');
+        if (!video) return;
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      });
+    }, { threshold: 0.4 });
+
+    document.querySelectorAll('.impacto-card').forEach(card => observer.observe(card));
+
+    updateDots(0);
+  })();
+</script>
+</body>
+</html>
