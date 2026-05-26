@@ -223,6 +223,7 @@
     color: var(--texto-suave);
     margin-bottom: 1.2rem;
     font-weight: 300;
+    text-align: justify;
   }
 
   .sobre-text p strong { color: var(--verde); font-weight: 500; }
@@ -884,6 +885,7 @@
     justify-content: center;
     flex-wrap: wrap;
     margin-bottom: 2rem;
+    
   }
 
   .footer-links a {
@@ -991,6 +993,181 @@
   }
 
   .cta-btn:hover { background: #f0d070; transform: translateY(-1px); }
+
+/* ── INSCRIÇÃO ── */
+.inscricao-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+  margin-top: 3rem;
+}
+
+.inscricao-texto {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.65);
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+
+.inscricao-itens {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.inscricao-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.inscricao-icone {
+  width: 36px;
+  height: 36px;
+  background: rgba(82,183,136,0.12);
+  border: 1px solid rgba(82,183,136,0.25);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.inscricao-item-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 0.2rem;
+}
+
+.inscricao-item-valor {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.inscricao-form {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(82,183,136,0.18);
+  border-radius: 8px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.form-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  font-weight: 500;
+}
+
+.form-input {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  transition: border-color 0.2s, background 0.2s;
+  outline: none;
+  width: 100%;
+}
+
+.form-input::placeholder { color: rgba(255,255,255,0.25); }
+.form-input:focus {
+  border-color: rgba(82,183,136,0.5);
+  background: rgba(255,255,255,0.09);
+}
+
+.form-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,0.3)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  cursor: pointer;
+}
+
+.form-select option { background: #1a3d2b; color: #fff; }
+
+.form-radio-group {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.form-radio {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.7);
+}
+
+.form-radio input[type="radio"] {
+  accent-color: var(--verde-claro);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.form-btn {
+  margin-top: 0.5rem;
+  padding: 0.9rem 2rem;
+  background: var(--areia);
+  color: var(--verde);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.form-btn:hover { background: #f0d070; transform: translateY(-1px); }
+.form-btn:active { transform: translateY(0); }
+
+.form-aviso {
+  font-size: 0.85rem;
+  text-align: center;
+  margin-top: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+}
+
+.form-aviso.sucesso {
+  background: rgba(82,183,136,0.15);
+  color: var(--verde-claro);
+  border: 1px solid rgba(82,183,136,0.3);
+}
+
+.form-aviso.erro {
+  background: rgba(199,125,70,0.15);
+  color: var(--terracota);
+  border: 1px solid rgba(199,125,70,0.3);
+}
+
+@media (max-width: 700px) {
+  .inscricao-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+
 </style>
 </head>
 <body>
@@ -1004,39 +1181,45 @@
     <li><a href="#historia">Impactos</a></li>
     <li><a href="#convidados">Convidados</a></li>
     <li><a href="#local">Local</a></li>
+    <li><a href="#inscricao">Inscrição</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
+<!-- HERO -->
+<!-- HERO -->
 <section class="hero">
-  <svg class="topo-bg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
-    <path d="M0,350 Q200,280 400,320 T800,300 T1200,340" stroke="#52b788" stroke-width="1" fill="none"/>
-    <path d="M0,380 Q200,310 400,350 T800,330 T1200,370" stroke="#52b788" stroke-width="1" fill="none"/>
-    <path d="M0,410 Q200,340 400,380 T800,360 T1200,400" stroke="#52b788" stroke-width="1" fill="none"/>
-    <path d="M0,440 Q200,370 400,410 T800,390 T1200,430" stroke="#52b788" stroke-width="1" fill="none"/>
-    <path d="M0,320 Q200,250 400,290 T800,270 T1200,310" stroke="#52b788" stroke-width="1" fill="none"/>
-    <path d="M0,290 Q200,220 400,260 T800,240 T1200,280" stroke="#52b788" stroke-width="1" fill="none"/>
-    <path d="M0,260 Q200,190 400,230 T800,210 T1200,250" stroke="#52b788" stroke-width="0.5" fill="none"/>
-    <path d="M0,470 Q200,400 400,440 T800,420 T1200,460" stroke="#52b788" stroke-width="0.5" fill="none"/>
-    <circle cx="900" cy="150" r="180" stroke="#e9c46a" stroke-width="0.5" fill="none"/>
-    <circle cx="900" cy="150" r="140" stroke="#e9c46a" stroke-width="0.5" fill="none"/>
-    <circle cx="900" cy="150" r="100" stroke="#e9c46a" stroke-width="0.5" fill="none"/>
-    <circle cx="900" cy="150" r="60" stroke="#e9c46a" stroke-width="0.5" fill="none"/>
-  </svg>
-
-  <div class="hero-anno" aria-hidden="true">V</div>
+  <style>
+    .hero {
+      background-image: url("fundo-topo.png");
+      background-size: cover;
+      background-position: center;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(10, 28, 18, 0.15) 0%,
+        rgba(10, 28, 18, 0.20) 40%,
+        rgba(10, 28, 18, 0.80) 100%
+      );
+    }
+    .hero-content {
+      z-index: 3;
+      position: absolute;
+      bottom: 5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      padding: 0 2rem;
+    }
+  </style>
 
   <div class="hero-content">
     <div class="badge">Programa de Pós-Graduação em Modelagem em Ciências da Terra e do Ambiente</div>
     <p class="hero-tag">PPGM · 20 Anos · 2006 — 2026</p>
-    <h1 class="hero-title">
-      V Seminário de <br>
-      <em>Acompanhamento de Teses</em><br>
-      das Ciências Ambientais
-    </h1>
-    <p class="hero-sub">
-      Passado, presente e perspectivas futuras das Ciências Ambientais. Duas décadas de pesquisa em modelagem ambiental, celebradas através de bancas de acompanhamento, palestras e diálogo científico.
-    </p>
     <div class="hero-meta">
       <div class="hero-meta-item">
         <span>Data</span>
@@ -1060,6 +1243,7 @@
     <span>Role</span>
   </div>
 </section>
+
 
 <!-- SOBRE -->
 <section class="section" id="sobre">
@@ -1681,6 +1865,103 @@
   </div>
 </section>
 
+<!-- INSCRIÇÃO -->
+<section class="section" id="inscricao" style="background: var(--verde);">
+  <div class="container">
+    <p class="section-label" style="color: rgba(82,183,136,0.7);">Participe</p>
+    <h2 class="section-title" style="color: #fff;">Inscreva-se no evento</h2>
+    <div class="divider-line"></div>
+
+    <div class="inscricao-grid">
+      <div class="inscricao-info">
+        <p class="inscricao-texto">
+          O seminário é aberto à comunidade acadêmica. Estudantes de graduação e pós-graduação, pesquisadores e interessados nas ciências ambientais são bem-vindos.
+        </p>
+        <div class="inscricao-itens">
+          <div class="inscricao-item">
+            <div class="inscricao-icone">📅</div>
+            <div>
+              <div class="inscricao-item-label">Período de inscrições</div>
+              <div class="inscricao-item-valor">Até 05 de agosto de 2026</div>
+            </div>
+          </div>
+          <div class="inscricao-item">
+            <div class="inscricao-icone">💸</div>
+            <div>
+              <div class="inscricao-item-label">Investimento</div>
+              <div class="inscricao-item-valor">Gratuito</div>
+            </div>
+          </div>
+          <div class="inscricao-item">
+            <div class="inscricao-icone">🎓</div>
+            <div>
+              <div class="inscricao-item-label">Certificado</div>
+              <div class="inscricao-item-valor">Emitido para participantes</div>
+            </div>
+          </div>
+          <div class="inscricao-item">
+            <div class="inscricao-icone">💻</div>
+            <div>
+              <div class="inscricao-item-label">Modalidade</div>
+              <div class="inscricao-item-valor">Presencial e remoto</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form class="inscricao-form" onsubmit="enviarInscricao(event)">
+        <div class="form-group">
+          <label class="form-label">Nome completo<span style="color: var(--terracota);">*</span></label>
+          <input name="nome" class="form-input" type="text" placeholder="Seu nome" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">E-mail<span style="color: var(--terracota);">*</span></label>
+          <input name="email" class="form-input" type="email" placeholder="seu@email.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Instituição<span style="color: var(--terracota);">*</span></label>
+          <input name="instituicao" class="form-input" type="text" placeholder="Universidade ou instituição">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Vínculo<span style="color: var(--terracota);">*</span></label>
+          <select name="vinculo" class="form-input form-select">
+            <option value="" disabled selected>Selecione</option>
+            <option>Estudante de graduação</option>
+            <option>Mestrando(a)</option>
+            <option>Doutorando(a)</option>
+            <option>Pesquisador(a) / Docente</option>
+            <option>Profissional externo</option>
+            <option>Outro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">CPF <span style="color: var(--terracota);">*</span></label>
+          <input class="form-input" type="text" placeholder="000.000.000-00" maxlength="14" required id="campo-cpf">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Matrícula <span style="color: rgba(255,255,255,0.3); font-size: 0.65rem; letter-spacing: 0.05em; text-transform: none;"></span></label>
+          <input name="matricula" class="form-input" type="text" placeholder="Número de matrícula">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Modalidade de participação</label>
+          <div class="form-radio-group">
+            <label class="form-radio">
+              <input type="radio" name="modalidade" value="presencial" checked>
+              <span>Presencial</span>
+            </label>
+            <label class="form-radio">
+              <input type="radio" name="modalidade" value="remoto">
+              <span>Remoto</span>
+            </label>
+          </div>
+        </div>
+        <button class="form-btn" type="submit">Confirmar inscrição</button>
+        <p class="form-aviso" id="form-aviso" style="display:none;"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
 <!-- RODAPÉ -->
 <footer>
   <div class="footer-logo">PPGM 20 Anos</div>
@@ -1691,6 +1972,7 @@
     <a href="#historia">Impactos</a>
     <a href="#convidados">Convidados</a>
     <a href="#local">Local</a>
+    <a href="#inscricao">Inscrição</a>
   </div>
   <div class="footer-copy">© Turma V — Doutorado · PPGM · UEFS. Todos os direitos reservados.</div>
 </footer>
@@ -1886,6 +2168,54 @@
 
     updateDots(0);
   })();
+
+
+/* ── INSCRIÇÃO ── */
+function enviarInscricao(e) {
+  e.preventDefault();
+  const aviso = document.getElementById('form-aviso');
+  const btn = e.target.querySelector('.form-btn');
+
+  const FORM_ID = '1FAIpQLSdLHzgmF_EXyvu1MY2uLPEKzlDh0Vwfbf92rEAsNGFyEDyEjA';
+
+  const dados = new FormData(e.target);
+  const params = new URLSearchParams({
+    'entry.2092238618': dados.get('nome'),       // substitua pelos entry IDs reais
+    'entry.1556369182': dados.get('email'),
+    'entry.479301265': dados.get('instituicao'),
+    'entry.694609552': dados.get('cpf'),
+    'entry.404570720': dados.get('matricula'),
+    'entry.696544699': dados.get('vinculo'),
+    'entry.1126189928_sentinel': dados.get('modalidade'),
+  });
+
+  btn.textContent = 'Enviando…';
+  btn.disabled = true;
+
+  fetch(`https://docs.google.com/forms/d/e/${FORM_ID}/viewform?usp=dialog`, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: params.toString()
+  })
+  .then(() => {
+    aviso.style.display = 'block';
+    aviso.className = 'form-aviso sucesso';
+    aviso.textContent = '✓ Inscrição recebida! Você receberá um e-mail de confirmação em breve.';
+    e.target.reset();
+  })
+  .catch(() => {
+    aviso.style.display = 'block';
+    aviso.className = 'form-aviso erro';
+    aviso.textContent = '✗ Erro ao enviar. Tente novamente ou entre em contato por e-mail.';
+  })
+  .finally(() => {
+    btn.textContent = 'Confirmar inscrição';
+    btn.disabled = false;
+  });
+}
+
+
 </script>
 </body>
 </html>
