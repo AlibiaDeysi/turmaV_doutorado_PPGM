@@ -52,13 +52,6 @@
       radial-gradient(ellipse 40% 40% at 10% 20%, rgba(199,125,70,0.12) 0%, transparent 60%);
   }
 
-  .topo-bg {
-    position: absolute;
-    inset: 0;
-    opacity: 0.07;
-    pointer-events: none;
-  }
-
   .badge {
     display: inline-block;
     border: 1px solid rgba(82,183,136,0.5);
@@ -72,22 +65,6 @@
     margin-bottom: 2rem;
     position: relative;
     animation: fadeUp 0.8s ease both;
-  }
-
-  .hero-anno {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(5rem, 18vw, 13rem);
-    font-weight: 900;
-    color: transparent;
-    -webkit-text-stroke: 1.5px rgba(82,183,136,0.35);
-    line-height: 0.85;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    white-space: nowrap;
-    letter-spacing: -0.02em;
   }
 
   .hero-content { position: relative; z-index: 2; }
@@ -325,11 +302,12 @@
     width: max-content;
   }
 
+  /* ── STORY CARD: tamanho reduzido + imagem completa ── */
   .story-card {
     flex-shrink: 0;
     scroll-snap-align: start;
-    width: 620px;
-    height: 796px;
+    width: 340px;
+    height: 440px;
     border-radius: 16px;
     position: relative;
     overflow: hidden;
@@ -340,6 +318,7 @@
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     user-select: none;
+    background-color: #0f2a1c; /* fallback escuro verde */
   }
 
   .story-card:hover {
@@ -347,19 +326,20 @@
     box-shadow: 0 20px 60px rgba(0,0,0,0.4);
   }
 
-  .story-card[data-eixo="0"] { background: url("image1.jpeg") center/cover no-repeat; }
-  .story-card[data-eixo="1"] { background: url("image1.jpeg") center/cover no-repeat; }
-  .story-card[data-eixo="2"] { background: url("image1.jpeg") center/cover no-repeat;}
-  .story-card[data-eixo="3"] { background: url("image1.jpeg") center/cover no-repeat; }
-  .story-card[data-eixo="4"] { background: url("image1.jpeg") center/cover no-repeat; }
-  .story-card[data-eixo="5"] { background: url("image1.jpeg") center/cover no-repeat; }
-  .story-card[data-eixo="6"] { background: url("image1.jpeg") center/cover no-repeat; }
-  .story-card[data-eixo="7"] { background: url("image1.jpeg") center/cover no-repeat; }
-  .story-card[data-eixo="8"] { background: url("image1.jpeg") center/cover no-repeat; }
-  .story-card[data-eixo="9"] { background: url("image1.jpeg") center/cover no-repeat; }
-  .story-card[data-eixo="10"] { background: url("image1.jpeg") center/cover no-repeat; }
-  .story-card[data-eixo="11"] { background: url("image1.jpeg") center/cover no-repeat; }
-  .story-card[data-eixo="12"] { background: url("image1.jpeg") center/cover no-repeat; }
+  /* background-size: contain garante a imagem completa */
+  .story-card[data-eixo="0"]  { background: url("image1.jpeg") center/contain no-repeat; }
+  .story-card[data-eixo="1"]  { background: url("image1.jpeg") center/contain no-repeat; }
+  .story-card[data-eixo="2"]  { background: url("image1.jpeg") center/contain no-repeat; }
+  .story-card[data-eixo="3"]  { background: url("image1.jpeg") center/contain no-repeat; }
+  .story-card[data-eixo="4"]  { background: url("image1.jpeg") center/contain no-repeat; }
+  .story-card[data-eixo="5"]  { background: url("image1.jpeg") center/contain no-repeat; }
+  .story-card[data-eixo="6"]  { background: url("image1.jpeg") center/contain no-repeat; }
+  .story-card[data-eixo="7"]  { background: url("image1.jpeg") center/contain no-repeat; }
+  .story-card[data-eixo="8"]  { background: url("image1.jpeg") center/contain no-repeat; }
+  .story-card[data-eixo="9"]  { background: url("image1.jpeg") center/contain no-repeat; }
+  .story-card[data-eixo="10"] { background: url("image1.jpeg") center/contain no-repeat; }
+  .story-card[data-eixo="11"] { background: url("image1.jpeg") center/contain no-repeat; }
+  .story-card[data-eixo="12"] { background: url("image1.jpeg") center/contain no-repeat; }
 
   .story-card-pattern {
     position: absolute;
@@ -543,7 +523,6 @@
     margin-top: 3rem;
   }
 
-  /* Trilha horizontal com peek */
   .impacto-track-outer {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
@@ -562,12 +541,12 @@
     width: max-content;
   }
 
-  /* Card de impacto — formato widescreen landscape */
+  /* ── IMPACTO CARD: tamanho reduzido + imagem/vídeo completo ── */
   .impacto-card {
     flex-shrink: 0;
     scroll-snap-align: start;
-    width: 620px;
-    height: 796px;
+    width: 400px;
+    height: 520px;
     border-radius: 12px;
     position: relative;
     overflow: hidden;
@@ -596,15 +575,14 @@
     pointer-events: none;
   }
 
-  /* Fallback: cor/gradiente quando não há vídeo */
-  .impacto-card[data-cor="verde"]   { background: url("video1.mp4") center/cover no-repeat; }
-  .impacto-card[data-cor="ocre"]    { background: url("video1.mp4") center/cover no-repeat; }
-  .impacto-card[data-cor="azul"]    { background: url("image1.jpeg") center/cover no-repeat; }
-  .impacto-card[data-cor="lilas"]   { background: linear-gradient(135deg, #1e0a3d 0%, #4a1a8a 100%); }
-  .impacto-card[data-cor="coral"]   { background: linear-gradient(135deg, #3a0e0e 0%, #7a2a1a 100%); }
-  .impacto-card[data-cor="cinza"]   { background: linear-gradient(135deg, #1a1a1a 0%, #3a3a3a 100%); }
+  /* Fallback para cards sem vídeo: contain para mostrar imagem completa */
+  .impacto-card[data-cor="verde"]  { background-color: #0e2419; }
+  .impacto-card[data-cor="ocre"]   { background-color: #1a1000; }
+  .impacto-card[data-cor="azul"]   { background: url("image1.jpeg") center/contain no-repeat; background-color: #0a1520; }
+  .impacto-card[data-cor="lilas"]  { background: linear-gradient(135deg, #1e0a3d 0%, #4a1a8a 100%); }
+  .impacto-card[data-cor="coral"]  { background: linear-gradient(135deg, #3a0e0e 0%, #7a2a1a 100%); }
+  .impacto-card[data-cor="cinza"]  { background: linear-gradient(135deg, #1a1a1a 0%, #3a3a3a 100%); }
 
-  /* Padrão decorativo SVG sobre o fundo */
   .impacto-deco {
     position: absolute;
     inset: 0;
@@ -614,7 +592,6 @@
     pointer-events: none;
   }
 
-  /* Overlay escuro gradiente na base */
   .impacto-overlay {
     position: absolute;
     bottom: 0;
@@ -625,7 +602,6 @@
     pointer-events: none;
   }
 
-  /* Conteúdo textual */
   .impacto-content {
     position: relative;
     z-index: 2;
@@ -660,7 +636,6 @@
     max-width: 420px;
   }
 
-  /* Indicadores de vídeo — barra inferior */
   .impacto-dots {
     display: flex;
     gap: 6px;
@@ -683,7 +658,6 @@
     transform: scale(1.3);
   }
 
-  /* Navegação impactos */
   .impacto-nav {
     display: flex;
     gap: 0.75rem;
@@ -722,7 +696,6 @@
     padding-left: 2rem;
   }
 
-  /* Badge de categoria nos cards de impacto */
   .impacto-badge {
     display: inline-block;
     font-size: 0.58rem;
@@ -885,7 +858,6 @@
     justify-content: center;
     flex-wrap: wrap;
     margin-bottom: 2rem;
-    
   }
 
   .footer-links a {
@@ -966,8 +938,8 @@
     .numeros { grid-template-columns: 1fr 1fr; }
     .numeros .numero-card:first-child { grid-column: 1 / -1; }
     .prog-item { grid-template-columns: 80px 1fr; gap: 1rem; }
-    .story-card { width: 220px; height: 390px; }
-    .impacto-card { width: 300px; height: 220px; }
+    .story-card { width: 260px; height: 340px; }
+    .impacto-card { width: 280px; height: 380px; }
   }
 
   .divider-line {
@@ -1167,7 +1139,6 @@
 @media (max-width: 700px) {
   .inscricao-grid { grid-template-columns: 1fr; gap: 2rem; }
 }
-
 </style>
 </head>
 <body>
@@ -1185,8 +1156,6 @@
   </ul>
 </nav>
 
-<!-- HERO -->
-<!-- HERO -->
 <!-- HERO -->
 <section class="hero">
   <style>
@@ -1452,15 +1421,14 @@
         <div>
           <span class="prog-tipo tipo-banca">Banca de Acompanhamento</span>
           <div class="prog-info-titulo">Sessão de bancas de acompanhamento — Eixo Fungo</div>
-          <div class="prog-info-quem">Doutoranda Dani </div>
+          <div class="prog-info-quem">Doutoranda Dani</div>
         </div>
       </div>
       <div class="prog-item">
         <div class="prog-hora">10h15<small>—10h30</small></div>
         <div>
           <span class="prog-tipo tipo-palestra">Coffee break</span>
-          <div class="prog-info-titulo">Pausa </div>
-          
+          <div class="prog-info-titulo">Pausa</div>
         </div>
       </div>
       <div class="prog-item">
@@ -1471,35 +1439,30 @@
           <div class="prog-info-quem">Doutorando Higo</div>
         </div>
       </div>
-    </div>
-
-    <div class="prog-item">
-      <div class="prog-hora">14h00<small>—16h00</small></div>
-      <div>
-        <span class="prog-tipo tipo-banca">Banca de Acompanhamento</span>
-        <div class="prog-info-titulo">Sessão de bancas doutorais — Eixo Energias Renováveis</div>
-        <div class="prog-info-quem">Doutorando Soltan</div>
+      <div class="prog-item">
+        <div class="prog-hora">14h00<small>—16h00</small></div>
+        <div>
+          <span class="prog-tipo tipo-banca">Banca de Acompanhamento</span>
+          <div class="prog-info-titulo">Sessão de bancas doutorais — Eixo Energias Renováveis</div>
+          <div class="prog-info-quem">Doutorando Soltan</div>
+        </div>
+      </div>
+      <div class="prog-item">
+        <div class="prog-hora">16h00<small>—16h30</small></div>
+        <div>
+          <span class="prog-tipo tipo-palestra">Coffee break</span>
+          <div class="prog-info-titulo">Pausa</div>
+        </div>
+      </div>
+      <div class="prog-item">
+        <div class="prog-hora">16h30<small>—18h30</small></div>
+        <div>
+          <span class="prog-tipo tipo-banca">Banca de Acompanhamento</span>
+          <div class="prog-info-titulo">Sessão de bancas doutorais — Eixo Energias Renováveis</div>
+          <div class="prog-info-quem">Doutoranda Alíbia</div>
+        </div>
       </div>
     </div>
-    
-    <div class="prog-item">
-      <div class="prog-hora">16h00<small>—16h30</small></div>
-      <div>
-        <span class="prog-tipo tipo-palestra">Coffee break</span>
-        <div class="prog-info-titulo">Pausa </div>
-        
-      </div>
-    </div>
-
-    <div class="prog-item">
-      <div class="prog-hora">16h30<small>—18h30</small></div>
-      <div>
-        <span class="prog-tipo tipo-banca">Banca de Acompanhamento</span>
-        <div class="prog-info-titulo">Sessão de bancas doutorais — Eixo Energias Renováveis</div>
-        <div class="prog-info-quem">Doutoranda Alíbia</div>
-      </div>
-    </div>
-  </div>
 
     <div class="prog-panel" id="dia-1">
       <div class="prog-item">
@@ -1585,16 +1548,8 @@
     <div class="impacto-track-outer" id="impactoTrack">
       <div class="impacto-track" id="impactoCards">
 
-        <!-- Card 1 -->
         <div class="impacto-card" data-cor="verde" data-idx="0">
-          <!--
-            Para adicionar vídeo: substitua o comentário abaixo pela tag video.
-            Exemplo:
-            <video class="impacto-video" src="video-caatinga.mp4"
-              autoplay muted loop playsinline preload="auto"></video>
-          -->
-          <video class="impacto-video" src="video1.mp4"
-              autoplay muted loop playsinline preload="auto"></video>
+          <video class="impacto-video" src="video1.mp4" autoplay muted loop playsinline preload="auto"></video>
           <svg class="impacto-deco" viewBox="0 0 560 360" preserveAspectRatio="xMidYMid slice">
             <path d="M0,180 Q140,120 280,150 T560,140" stroke="#52b788" stroke-width="2" fill="none"/>
             <path d="M0,210 Q140,150 280,180 T560,170" stroke="#52b788" stroke-width="1.5" fill="none"/>
@@ -1612,12 +1567,8 @@
           </div>
         </div>
 
-        <!-- Card 2 -->
         <div class="impacto-card" data-cor="ocre" data-idx="1">
-          
-            <video class="impacto-video" src="video2.mp4"
-              autoplay muted loop playsinline preload="auto"></video>
-          
+          <video class="impacto-video" src="video2.mp4" autoplay muted loop playsinline preload="auto"></video>
           <svg class="impacto-deco" viewBox="0 0 560 360" preserveAspectRatio="xMidYMid slice">
             <line x1="0" y1="60" x2="560" y2="40" stroke="#c77d46" stroke-width="2"/>
             <line x1="0" y1="100" x2="560" y2="80" stroke="#c77d46" stroke-width="1.5"/>
@@ -1634,12 +1585,8 @@
           </div>
         </div>
 
-        <!-- Card 3 -->
         <div class="impacto-card" data-cor="azul" data-idx="2">
-          
-            <video class="impacto-video" src="video3.mp4"
-              autoplay muted loop playsinline preload="auto"></video>
-          
+          <video class="impacto-video" src="video3.mp4" autoplay muted loop playsinline preload="auto"></video>
           <svg class="impacto-deco" viewBox="0 0 560 360" preserveAspectRatio="xMidYMid slice">
             <circle cx="280" cy="140" r="120" stroke="#52b0d4" stroke-width="1.5" fill="none"/>
             <circle cx="280" cy="140" r="85" stroke="#52b0d4" stroke-width="1.2" fill="none"/>
@@ -1657,12 +1604,8 @@
           </div>
         </div>
 
-        <!-- Card 4 -->
         <div class="impacto-card" data-cor="lilas" data-idx="3">
-          
-            <video class="impacto-video" src="video4.mp4"
-              autoplay muted loop playsinline preload="auto"></video>
-          
+          <video class="impacto-video" src="video4.mp4" autoplay muted loop playsinline preload="auto"></video>
           <svg class="impacto-deco" viewBox="0 0 560 360" preserveAspectRatio="xMidYMid slice">
             <path d="M280,40 C280,40 180,120 200,200 C220,280 280,250 280,280 C280,250 340,280 360,200 C380,120 280,40 280,40Z" stroke="#9b8ec4" stroke-width="1.5" fill="none"/>
             <path d="M280,80 C280,80 215,145 228,200 C241,255 280,235 280,255 C280,235 319,255 332,200 C345,145 280,80 280,80Z" stroke="#9b8ec4" stroke-width="1" fill="none"/>
@@ -1680,12 +1623,7 @@
           </div>
         </div>
 
-        <!-- Card 5 -->
         <div class="impacto-card" data-cor="coral" data-idx="4">
-          <!--
-            <video class="impacto-video" src="video-modelagem.mp4"
-              autoplay muted loop playsinline preload="auto"></video>
-          -->
           <svg class="impacto-deco" viewBox="0 0 560 360" preserveAspectRatio="xMidYMid slice">
             <rect x="40" y="60" width="80" height="55" rx="4" stroke="#d47b7b" stroke-width="1.2" fill="none"/>
             <rect x="160" y="35" width="80" height="55" rx="4" stroke="#d47b7b" stroke-width="1.2" fill="none"/>
@@ -1713,12 +1651,7 @@
           </div>
         </div>
 
-        <!-- Card 6 -->
         <div class="impacto-card" data-cor="cinza" data-idx="5">
-          <!--
-            <video class="impacto-video" src="video-formacao.mp4"
-              autoplay muted loop playsinline preload="auto"></video>
-          -->
           <svg class="impacto-deco" viewBox="0 0 560 360" preserveAspectRatio="xMidYMid slice">
             <path d="M0,180 Q140,100 280,130 T560,110" stroke="#aaa" stroke-width="2" fill="none"/>
             <path d="M0,210 Q140,130 280,160 T560,140" stroke="#aaa" stroke-width="1.5" fill="none"/>
@@ -1741,7 +1674,6 @@
       </div>
     </div>
 
-    <!-- Dots de navegação -->
     <div class="impacto-dots" id="impactoDots">
       <div class="impacto-dot active" data-idx="0"></div>
       <div class="impacto-dot" data-idx="1"></div>
@@ -1759,7 +1691,7 @@
   </div>
 </section>
 
-<!-- CONVIDADOS (movido para depois dos impactos) -->
+<!-- CONVIDADOS -->
 <section class="section" id="convidados">
   <div class="container">
     <p class="section-label">Pessoas</p>
@@ -1939,7 +1871,7 @@
           <input class="form-input" type="text" placeholder="000.000.000-00" maxlength="14" required id="campo-cpf">
         </div>
         <div class="form-group">
-          <label class="form-label">Matrícula <span style="color: rgba(255,255,255,0.3); font-size: 0.65rem; letter-spacing: 0.05em; text-transform: none;"></span></label>
+          <label class="form-label">Matrícula</label>
           <input name="matricula" class="form-input" type="text" placeholder="Número de matrícula">
         </div>
         <div class="form-group">
@@ -1997,9 +1929,9 @@
   /* ── CARROSSEL STORY (eixos) ── */
   (function() {
     const TOTAL = 6;
-    const CARD_W = 280;
+    const CARD_W = 340;   /* largura atualizada */
     const GAP = 16;
-    const STEP = CARD_W + GAP;
+    const STEP = CARD_W + GAP;  /* = 356 */
 
     let current = 0;
 
@@ -2084,9 +2016,9 @@
   /* ── CARROSSEL IMPACTOS ── */
   (function() {
     const TOTAL = 6;
-    const CARD_W = 560;
+    const CARD_W = 400;   /* largura atualizada */
     const GAP = 20;
-    const STEP = CARD_W + GAP;
+    const STEP = CARD_W + GAP;  /* = 420 */
 
     let current = 0;
 
@@ -2169,53 +2101,50 @@
     updateDots(0);
   })();
 
+  /* ── INSCRIÇÃO ── */
+  function enviarInscricao(e) {
+    e.preventDefault();
+    const aviso = document.getElementById('form-aviso');
+    const btn = e.target.querySelector('.form-btn');
 
-/* ── INSCRIÇÃO ── */
-function enviarInscricao(e) {
-  e.preventDefault();
-  const aviso = document.getElementById('form-aviso');
-  const btn = e.target.querySelector('.form-btn');
+    const FORM_ID = '1FAIpQLSdLHzgmF_EXyvu1MY2uLPEKzlDh0Vwfbf92rEAsNGFyEDyEjA';
 
-  const FORM_ID = '1FAIpQLSdLHzgmF_EXyvu1MY2uLPEKzlDh0Vwfbf92rEAsNGFyEDyEjA';
+    const dados = new FormData(e.target);
+    const params = new URLSearchParams({
+      'entry.2092238618': dados.get('nome'),
+      'entry.1556369182': dados.get('email'),
+      'entry.479301265': dados.get('instituicao'),
+      'entry.694609552': dados.get('cpf'),
+      'entry.404570720': dados.get('matricula'),
+      'entry.696544699': dados.get('vinculo'),
+      'entry.1126189928_sentinel': dados.get('modalidade'),
+    });
 
-  const dados = new FormData(e.target);
-  const params = new URLSearchParams({
-    'entry.2092238618': dados.get('nome'),       // substitua pelos entry IDs reais
-    'entry.1556369182': dados.get('email'),
-    'entry.479301265': dados.get('instituicao'),
-    'entry.694609552': dados.get('cpf'),
-    'entry.404570720': dados.get('matricula'),
-    'entry.696544699': dados.get('vinculo'),
-    'entry.1126189928_sentinel': dados.get('modalidade'),
-  });
+    btn.textContent = 'Enviando…';
+    btn.disabled = true;
 
-  btn.textContent = 'Enviando…';
-  btn.disabled = true;
-
-  fetch(`https://docs.google.com/forms/d/e/${FORM_ID}/viewform?usp=dialog`, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: params.toString()
-  })
-  .then(() => {
-    aviso.style.display = 'block';
-    aviso.className = 'form-aviso sucesso';
-    aviso.textContent = '✓ Inscrição recebida! Você receberá um e-mail de confirmação em breve.';
-    e.target.reset();
-  })
-  .catch(() => {
-    aviso.style.display = 'block';
-    aviso.className = 'form-aviso erro';
-    aviso.textContent = '✗ Erro ao enviar. Tente novamente ou entre em contato por e-mail.';
-  })
-  .finally(() => {
-    btn.textContent = 'Confirmar inscrição';
-    btn.disabled = false;
-  });
-}
-
-
+    fetch(`https://docs.google.com/forms/d/e/${FORM_ID}/viewform?usp=dialog`, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: params.toString()
+    })
+    .then(() => {
+      aviso.style.display = 'block';
+      aviso.className = 'form-aviso sucesso';
+      aviso.textContent = '✓ Inscrição recebida! Você receberá um e-mail de confirmação em breve.';
+      e.target.reset();
+    })
+    .catch(() => {
+      aviso.style.display = 'block';
+      aviso.className = 'form-aviso erro';
+      aviso.textContent = '✗ Erro ao enviar. Tente novamente ou entre em contato por e-mail.';
+    })
+    .finally(() => {
+      btn.textContent = 'Confirmar inscrição';
+      btn.disabled = false;
+    });
+  }
 </script>
 </body>
 </html>
